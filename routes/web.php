@@ -18,14 +18,16 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/posts', [PostController::class, 'index']);
-Route::get('/post/new', [PostController::class, 'create']);
-Route::get('/post/{id}', [PostController::class, 'show']);
-Route::post('/posts', [PostController::class, 'store']);
+Route::resource('/posts', PostController::class);
 
 
 Route::get('/author/{id}', [AuthorController::class, 'show']);
 
 Route::get('/category/{id}', [CategoryController::class, 'show']);
+
+
+
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
