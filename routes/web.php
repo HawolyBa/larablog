@@ -27,7 +27,7 @@ Route::post('/posts', [PostController::class, 'store'])->middleware('auth');
 
 Route::get('/author/{id}', [AuthorController::class, 'show'])->name('author');
 
-Route::get('/category/{id}', [CategoryController::class, 'show'])->name('category');
+Route::get('/category/{name}', [CategoryController::class, 'show'])->name('category');
 
 Auth::routes();
 

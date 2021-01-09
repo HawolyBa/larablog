@@ -8,7 +8,7 @@
         <span class="metadata">Created at {{$postdata->created_at}}</span><br/>
       </div>
       <div>
-        <h5 class="caps"><a href='#' class="badge badge-info">{{$postdata->category}}</a></h5>
+        <h5 class="caps"><a href="{{ route('category', $postdata->category) }}"' class="badge badge-info">{{$postdata->category}}</a></h5>
       </div>
     </div>
     <img class="mb-3 post-image" src={{asset('storage/images/'.$postdata->image)}} alt="post image">
