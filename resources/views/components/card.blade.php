@@ -5,7 +5,7 @@
       <h5 class="card-title">{{ $title }}</h5>
       {{ $slot }}
       <p class="card-text">{{substr($body, 0, 120) . '...'}}</p>
-      <a href="{{ route('post', $id) }}" class="btn btn-primary">Read more</a>
+      <a href="{{ route('post', $id) }}" class="btn btn-dark">Read more</a>
     </div>
   </div>
 </div>

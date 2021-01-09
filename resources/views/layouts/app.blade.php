@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="darker navbar navbar-expand-md shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -62,7 +62,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <div>
-                                        <a class="dropdown-item" href="{{ route('myposts', Auth::user()->id) }}">{{ __('My posts') }}</a>
+                                        <a class="dropdown-item" href="{{ route('author', Auth::user()->id) }}">{{ __('My posts') }}</a>
                                     </div>
                                     <div>
                                         <a class="dropdown-item" href="{{ route('logout') }}"

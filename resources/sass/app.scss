@@ -1,8 +1,31 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
+
+.post-image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.card-img-top {
+    height: 190px;
+    object-fit: cover;
+}
+
+.darker {
+    background-color: #272727;
+
+    a {
+        color: white;
+    }
+}
+
+.caps {
+    text-transform: capitalize;
+}
