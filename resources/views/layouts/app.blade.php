@@ -39,6 +39,26 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                Categories
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div>
+                                    <a class="dropdown-item" href="{{ route('category', 'tech') }}">{{ __('Tech') }}</a>
+                                </div>
+                                <div>
+                                    <a class="dropdown-item" href="{{ route('category', 'fashion') }}">{{ __('Fashion') }}</a>
+                                </div>
+                                <div>
+                                    <a class="dropdown-item" href="{{ route('category', 'entertainment') }}">{{ __('Entertainment') }}</a>
+                                </div>
+                                <div>
+                                    <a class="dropdown-item" href="{{ route('category', 'history') }}">{{ __('History') }}</a>
+                                </div>
+                            </div>
+                        </li>
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">

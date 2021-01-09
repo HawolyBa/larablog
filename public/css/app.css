@@ -10924,6 +10924,10 @@ a.text-dark:focus {
   color: white;
 }
 
+.darker a.dropdown-item {
+  color: black;
+}
+
 .caps {
   text-transform: capitalize;
 }
