@@ -2,7 +2,7 @@
 @section('content')
   <h2>Add a new post</h2>
   <hr/>
-  <form action="/posts" method="POST">
+  <form action="/posts" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group row">
       <div class="col-lg-10 col-md-8 col-sm-6">
@@ -21,7 +21,7 @@
     </div>
     <div class="form-group">
       <label for="body">Start writing your article</label>
-      <textarea name="body" class="form-control" name="body" id="body" cols="30" rows="10"></textarea>
+      <textarea required name="body" class="form-control" name="body" id="body" cols="30" rows="10"></textarea>
     </div>
     <div class="form-group">
       <label for="image">Add an image</label>

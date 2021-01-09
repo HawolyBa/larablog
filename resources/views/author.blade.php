@@ -1,7 +1,22 @@
 @extends('layouts.app')
 @section('content')
-  <h2>Author - {{$author}}</h2>
-  @foreach ($posts as $post)
-      <h3>{{$post->title}}</h3>
-  @endforeach
+  <h2 class="mb-5">Author - {{$author}}</h2>
+  <div class="row">
+    @foreach ($posts as $post)
+        @component('components.card')
+          @slot('title')
+              {{$post->title}}
+          @endslot
+          @slot('image')
+              {{asset('storage/images/'.$post->image)}}
+          @endslot
+          @slot('body')
+              {{$post->body}}
+          @endslot
+          @slot('id')
+              {{$post->id}}
+          @endslot
+        @endcomponent
+    @endforeach
+  </div>
 @endsection

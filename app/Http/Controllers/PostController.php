@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -15,7 +18,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('allPosts');
+        $posts = DB::table('posts')->get();
+        return view('welcome', ['posts' => $posts]);
     }
 
     /**
@@ -36,14 +40,31 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = new Post();
-        $post->title = request('title');
-        $post->body = request('body'); 
-        $post->author = Auth::user()->id;
-        $post->image = 'https://images.pexels.com/photos/6341415/pexels-photo-6341415.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500';
+        $request->validate([
+            'title' => 'required',
+        ]);
 
-        $post->save();
-        return redirect('/posts');
+        if ($request->hasFile('image')) {
+
+            $request->validate([
+                'image' => 'mimes:jpeg,bmp,png' // Only allow .jpg, .bmp and .png file types.
+            ]);
+
+            // Save the file locally in the storage/public/ folder under a new folder named /product
+            $request->image->store('images', 'public');
+
+            // Store the record, using the new file hashname which will be it's new filename identity.
+            $post = new Post([
+                "title" => request('title'),
+                "body" => request('body'),
+                "category"=>request('category'),
+                "author" => Auth::user()->id,
+                "image" => $request->image->hashName()
+            ]);
+            $post->save();
+        }
+        
+        return redirect('/');
     }
 
     /**
