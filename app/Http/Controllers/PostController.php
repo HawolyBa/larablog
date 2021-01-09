@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
@@ -76,8 +77,8 @@ class PostController extends Controller
     public function show($id)
     {
         $postdata = Post::find($id);
-
-        return view('post', ['postdata' => $postdata]);
+        $user = User::find($postdata->author);
+        return view('post', ['postdata' => $postdata, 'author' => $user->name]);
     }
 
     /**

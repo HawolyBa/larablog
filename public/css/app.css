@@ -10974,3 +10974,9 @@ a.text-dark:focus {
         border-color: #dee2e6;
     }
 }
+
+.post-image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
