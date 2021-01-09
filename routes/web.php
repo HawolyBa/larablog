@@ -19,7 +19,10 @@ use App\Http\Controllers\CategoryController;
 */
 
 
-Route::resource('/posts', PostController::class);
+Route::get('/posts', [PostController::class, 'index']);
+Route::get('/post/new', [PostController::class, 'create'])->middleware('auth');
+Route::get('/post/{id}', [PostController::class, 'show']);
+Route::post('/posts', [PostController::class, 'store'])->middleware('auth');
 
 
 Route::get('/author/{id}', [AuthorController::class, 'show']);
@@ -30,4 +33,4 @@ Route::get('/category/{id}', [CategoryController::class, 'show']);
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');

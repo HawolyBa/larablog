@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -34,7 +36,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new Post();
+        $post->title = request('title');
+        $post->body = request('body'); 
+        $post->author = Auth::user()->id;
+        $post->image = 'https://images.pexels.com/photos/6341415/pexels-photo-6341415.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500';
+
+        $post->save();
+        return redirect('/posts');
     }
 
     /**
@@ -45,11 +54,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $postdata = [
-            'id' => $id,
-            'title' => 'Hello World',
-            'body' => 'This is the first article of this database'
-        ];
+        $postdata = Post::find($id);
 
         return view('post', ['postdata' => $postdata]);
     }
